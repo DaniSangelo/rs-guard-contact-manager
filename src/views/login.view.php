@@ -11,8 +11,8 @@
         </div>
 
         <div class="flex flex-col">
-            <h2 class="text-2xl font-bold mb-10"> Criar conta </h2>
-            <form action="" class="flex flex-col space-y-3">
+            <h2 class="text-2xl font-bold mb-10"> Acessar conta </h2>
+            <form action="/login" method="POST" class="flex flex-col space-y-3">
                 <div class="space-y-3">
                     <label
                         for="email"

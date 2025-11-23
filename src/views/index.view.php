@@ -12,7 +12,7 @@
 
         <div class="flex flex-col">
             <h2 class="text-2xl font-bold mb-10"> Criar conta </h2>
-            <form action="" class="flex flex-col space-y-3">
+            <form action="/register" method="POST" class="flex flex-col space-y-3">
                 <div class="space-y-3">
                     <label
                         for="name"

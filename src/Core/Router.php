@@ -21,7 +21,20 @@ class Router
         return $this;
     }
 
-    public function post($uri, $method, $controller, $middleware = null) {}
+    public function post($uri, $controller, $middleware = null)
+    {
+        if (!is_array($controller)) {
+            throw new \Exception("Controller must be an array");
+        }
+
+        $data = [
+            'class' => $controller[0],
+            'classMethod' => $controller[1],
+            'middleware' => $middleware,
+        ];
+        $this->routes['POST'][$uri] = $data;
+        return $this;
+    }
 
     public function delete($uri, $method, $controller, $middleware = null) {}
 
