@@ -8,6 +8,12 @@ class IndexController extends BaseController
 {
     public function index()
     {
-        $this->view('index');
+        $this->view('auth', [
+            'childView' => 'register-form',
+            'title' => 'Criar conta',
+            'switchText' => 'Já tem uma conta?',
+            'switchLabel' => 'Acessar conta.',
+            'switchLink' => '/login'
+        ]);
     }
 }

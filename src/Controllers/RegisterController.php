@@ -16,6 +16,12 @@ class RegisterController extends BaseController
     {
         $user = User::create($_POST['name'], $_POST['email'], $_POST['password']);
         User::register($user);
-        return $this->view('login');
+        return $this->view('auth', [
+            'childView' => 'login-form',
+            'title' => 'Acessar conta',
+            'switchText' => 'Não tem uma conta?',
+            'switchLabel' => 'Criar conta.',
+            'switchLink' => '/'
+        ]);
     }
 }
