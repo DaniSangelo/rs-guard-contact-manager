@@ -1,6 +1,10 @@
 <div class="grid grid-cols-[2fr_1fr]">
     <div>
         <img
+            class="fixed p-10"
+            src="/images/logo_name.png"
+            alt="logo" />
+        <img
             src="/images/cover.png"
             alt="imagem de capa do login"
             class="h-screen w-full object-cover" />

@@ -14,7 +14,6 @@ class RegisterController extends BaseController
 
     public function register()
     {
-        var_dump($_POST);
         $user = User::create($_POST['name'], $_POST['email'], $_POST['password']);
         User::register($user);
         return $this->view('login');
