@@ -25,6 +25,6 @@ class LoginController extends BaseController
         //     echo "Credenciais inválidas";
         //     return;
         // }
-        $this->view('dashboard');
+        $this->redirect('/dashboard');
     }
 }

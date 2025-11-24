@@ -10,4 +10,10 @@ class BaseController
 
         require __DIR__ . "/../views/templates/app.php";
     }
+
+    protected function redirect(string $url)
+    {
+        header("Location: $url");
+        exit;
+    }
 }
