@@ -1,4 +1,7 @@
 <?php
+
+$_GET['letter'] = $_GET['letter'] ?? 'A';
+
 $contacts = [
     [
         'nome' => 'John Doe',
@@ -14,6 +17,77 @@ $contacts = [
         'tipo' => 'amigo',
         'img' => 'images/p2.png'
     ],
+    [
+        'nome' => 'Alice Johnson',
+        'telefone' => '111-222-3333',
+        'email' => 'alice.j@example.com',
+        'tipo' => 'familia',
+        'img' => 'images/p2.png'
+    ],
+    [
+        'nome' => 'Bob Williams',
+        'telefone' => '444-555-6666',
+        'email' => 'bob.w@example.com',
+        'tipo' => 'trabalho',
+        'img' => 'images/p2.png'
+    ],
+    [
+        'nome' => 'Charlie Brown',
+        'telefone' => '777-888-9999',
+        'email' => 'charlie.b@example.com',
+        'tipo' => 'amigo',
+        'img' => 'images/p1.png'
+    ],
+    [
+        'nome' => 'Diana Prince',
+        'telefone' => '101-202-3030',
+        'email' => 'diana.p@example.com',
+        'tipo' => 'familia',
+        'img' => 'images/p2.png'
+    ],
+    [
+        'nome' => 'Eve Adams',
+        'telefone' => '404-505-6060',
+        'email' => 'eve.a@example.com',
+        'tipo' => 'trabalho',
+        'img' => 'images/p2.png'
+    ],
+    [
+        'nome' => 'Frank White',
+        'telefone' => '707-808-9090',
+        'email' => 'frank.w@example.com',
+        'tipo' => 'amigo',
+        'img' => 'images/p1.png'
+    ],
+    [
+        'nome' => 'Grace Kelly',
+        'telefone' => '123-123-1234',
+        'email' => 'grace.k@example.com',
+        'tipo' => 'familia',
+        'img' => 'images/p1.png'
+    ],
+    [
+        'nome' => 'Henry Green',
+        'telefone' => '456-456-4567',
+        'email' => 'henry.g@example.com',
+        'tipo' => 'trabalho',
+        'img' => 'images/p1.png'
+    ],
+    [
+        'nome' => 'Ivy King',
+        'telefone' => '789-789-7890',
+        'email' => 'ivy.k@example.com',
+        'tipo' => 'amigo',
+        'img' => 'images/p1.png'
+    ],
+    [
+        'nome' => 'Jack Black',
+        'telefone' => '000-111-2222',
+        'email' => 'jack.b@example.com',
+        'tipo' => 'familia',
+        'img' => 'images/p1.png'
+    ],
+
 ];
 ?>
 <div class="m-10 flex">
@@ -98,7 +172,9 @@ $contacts = [
         </div>
 
         <div class="flex gap-10">
-            <div class="
+            <div
+                id="alphabet" 
+                class="
                 w-14
                 bg-accent-brand
                 text-content-inverse
@@ -113,15 +189,29 @@ $contacts = [
                 space-y-2
             ">
                 <?php for($i = 65; $i <= 90; $i++): ?>
-                    <a class="w-8 h-8 cursor-pointer flex items-center justify-center rounded-full
-           hover:bg-accent-foreground transition-colors hover:font-bold">
+                    <a
+                        href="?letter=<?= chr($i) ?>"
+                        class="
+                            w-8 h-8
+                            cursor-pointer
+                            flex
+                            items-center
+                            justify-center
+                            rounded-full
+                            hover:bg-accent-foreground
+                            transition-colors
+                            hover:font-bold
+                            <?= (isset($_GET['letter']) && $_GET['letter'] === chr($i)) ? 'text-lg font-bold' : '' ?>
+                        ">
                         <?= chr($i) ?>
                     </a>
                 <?php endfor; ?>
             </div>
             <div class="w-full space-y-3">
                 <div class="border-b-1 pb-2">
-                    <span class="text-content-body font-bold"> C</span>
+                    <span id="filtered-letter" class="text-content-body font-bold">
+                        <?= $_GET['letter'] ?? 'A' ?>
+                    </span>
                 </div>
                 <div>
                     <table class="min-w-full divide-y divide-background-tertiary">
@@ -136,49 +226,61 @@ $contacts = [
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-background-tertiary">
-                            <?php foreach ($contacts as $item): ?>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex gap-3 items-center">
-                                            <div><img src="<?= $item['img'] ?>" alt="<?= $item['nome'] ?>" class="w-12 h-12 rounded-2xl" /></div>
-                                            <div class="flex flex-col gap-1">
-                                                <span class="text-sm"><?= $item['nome']  ?></span>
-                                                <span class="text-xs text-content-muted"><?= $item['tipo']  ?></span>
+                            <?php 
+                                $filteredContacts = array_filter($contacts, fn($contact) => $contact['nome'][0] === ($_GET['letter'] ?? 'A'));
+                                usort($filteredContacts, fn($a, $b) => strcmp($a['nome'], $b['nome']));
+                            ?>
+                            <?php if (count($filteredContacts) > 0) { ?>
+                                <?php foreach ($filteredContacts as $item): ?>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex gap-3 items-center">
+                                                <div><img src="<?= $item['img'] ?>" alt="<?= $item['nome'] ?>" class="w-12 h-12 rounded-2xl" /></div>
+                                                <div class="flex flex-col gap-1">
+                                                    <span class="text-sm"><?= $item['nome']  ?></span>
+                                                    <span class="text-xs text-content-muted"><?= $item['tipo']  ?></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><?= $item['telefone']  ?></td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><?= $item['email']  ?></td>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= $item['telefone']  ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= $item['email']  ?></td>
 
-                                    <!-- Ações -->
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <div class="flex items-center gap-4">
-                                            <a href="#" class="outline p-3 rounded-md hover:bg-background-tertiary flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 19H6.425L16.2 9.225L14.775 7.8L5 17.575V19ZM4 21C3.71667 21 3.47917 20.9042 3.2875 20.7125C3.09583 20.5208 3 20.2833 3 20V17.575C3 17.3083 3.05 17.0542 3.15 16.8125C3.25 16.5708 3.39167 16.3583 3.575 16.175L16.2 3.575C16.4 3.39167 16.6208 3.25 16.8625 3.15C17.1042 3.05 17.3583 3 17.625 3C17.8917 3 18.15 3.05 18.4 3.15C18.65 3.25 18.8667 3.4 19.05 3.6L20.425 5C20.625 5.18333 20.7708 5.4 20.8625 5.65C20.9542 5.9 21 6.15 21 6.4C21 6.66667 20.9542 6.92083 20.8625 7.1625C20.7708 7.40417 20.625 7.625 20.425 7.825L7.825 20.425C7.64167 20.6083 7.42917 20.75 7.1875 20.85C6.94583 20.95 6.69167 21 6.425 21H4ZM15.475 8.525L14.775 7.8L16.2 9.225L15.475 8.525Z" />
-                                                </svg>
-                                                Editar
-                                            </a>
-                                            <a href="#" class="rounded-lg p-2 outline items-center justify-center hover:fill-accent-brand fill-content-primary">
-                                                <svg
-                                                    width="15"
-                                                    height="15"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M6 22C5.45 22 4.97917 21.8042 4.5875 21.4125C4.19583 21.0208 4 20.55 4 20V10C4 9.45 4.19583 8.97917 4.5875 8.5875C4.97917 8.19583 5.45 8 6 8H15V6C15 5.16667 14.7083 4.45833 14.125 3.875C13.5417 3.29167 12.8333 3 12 3C11.3 3 10.6875 3.2125 10.1625 3.6375C9.6375 4.0625 9.28333 4.59167 9.1 5.225C9.03333 5.45833 8.89583 5.64583 8.6875 5.7875C8.47917 5.92917 8.25 6 8 6C7.71667 6 7.47917 5.90833 7.2875 5.725C7.09583 5.54167 7.025 5.325 7.075 5.075C7.30833 3.925 7.88333 2.95833 8.8 2.175C9.71667 1.39167 10.7833 1 12 1C13.3833 1 14.5625 1.4875 15.5375 2.4625C16.5125 3.4375 17 4.61667 17 6V8H18C18.55 8 19.0208 8.19583 19.4125 8.5875C19.8042 8.97917 20 9.45 20 10V20C20 20.55 19.8042 21.0208 19.4125 21.4125C19.0208 21.8042 18.55 22 18 22H6ZM6 20H18V10H6V20ZM12 17C12.55 17 13.0208 16.8042 13.4125 16.4125C13.8042 16.0208 14 15.55 14 15C14 14.45 13.8042 13.9792 13.4125 13.5875C13.0208 13.1958 12.55 13 12 13C11.45 13 10.9792 13.1958 10.5875 13.5875C10.1958 13.9792 10 14.45 10 15C10 15.55 10.1958 16.0208 10.5875 16.4125C10.9792 16.8042 11.45 17 12 17Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="#" class="rounded-lg p-2 outline items-center justify-center hover:fill-accent-red fill-content-primary">
-                                                <svg
-                                                    width="15"
-                                                    height="15"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17ZM14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17Z" />
-                                                </svg>
-                                            </a>
-                                        </div>
+                                        <!-- Ações -->
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <div class="flex items-center gap-4">
+                                                <a href="#" class="outline p-3 rounded-md hover:bg-background-tertiary flex items-center gap-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 19H6.425L16.2 9.225L14.775 7.8L5 17.575V19ZM4 21C3.71667 21 3.47917 20.9042 3.2875 20.7125C3.09583 20.5208 3 20.2833 3 20V17.575C3 17.3083 3.05 17.0542 3.15 16.8125C3.25 16.5708 3.39167 16.3583 3.575 16.175L16.2 3.575C16.4 3.39167 16.6208 3.25 16.8625 3.15C17.1042 3.05 17.3583 3 17.625 3C17.8917 3 18.15 3.05 18.4 3.15C18.65 3.25 18.8667 3.4 19.05 3.6L20.425 5C20.625 5.18333 20.7708 5.4 20.8625 5.65C20.9542 5.9 21 6.15 21 6.4C21 6.66667 20.9542 6.92083 20.8625 7.1625C20.7708 7.40417 20.625 7.625 20.425 7.825L7.825 20.425C7.64167 20.6083 7.42917 20.75 7.1875 20.85C6.94583 20.95 6.69167 21 6.425 21H4ZM15.475 8.525L14.775 7.8L16.2 9.225L15.475 8.525Z" />
+                                                    </svg>
+                                                    Editar
+                                                </a>
+                                                <a href="#" class="rounded-lg p-2 outline items-center justify-center hover:fill-accent-brand fill-content-primary">
+                                                    <svg
+                                                        width="15"
+                                                        height="15"
+                                                        viewBox="0 0 24 24">
+                                                        <path d="M6 22C5.45 22 4.97917 21.8042 4.5875 21.4125C4.19583 21.0208 4 20.55 4 20V10C4 9.45 4.19583 8.97917 4.5875 8.5875C4.97917 8.19583 5.45 8 6 8H15V6C15 5.16667 14.7083 4.45833 14.125 3.875C13.5417 3.29167 12.8333 3 12 3C11.3 3 10.6875 3.2125 10.1625 3.6375C9.6375 4.0625 9.28333 4.59167 9.1 5.225C9.03333 5.45833 8.89583 5.64583 8.6875 5.7875C8.47917 5.92917 8.25 6 8 6C7.71667 6 7.47917 5.90833 7.2875 5.725C7.09583 5.54167 7.025 5.325 7.075 5.075C7.30833 3.925 7.88333 2.95833 8.8 2.175C9.71667 1.39167 10.7833 1 12 1C13.3833 1 14.5625 1.4875 15.5375 2.4625C16.5125 3.4375 17 4.61667 17 6V8H18C18.55 8 19.0208 8.19583 19.4125 8.5875C19.8042 8.97917 20 9.45 20 10V20C20 20.55 19.8042 21.0208 19.4125 21.4125C19.0208 21.8042 18.55 22 18 22H6ZM6 20H18V10H6V20ZM12 17C12.55 17 13.0208 16.8042 13.4125 16.4125C13.8042 16.0208 14 15.55 14 15C14 14.45 13.8042 13.9792 13.4125 13.5875C13.0208 13.1958 12.55 13 12 13C11.45 13 10.9792 13.1958 10.5875 13.5875C10.1958 13.9792 10 14.45 10 15C10 15.55 10.1958 16.0208 10.5875 16.4125C10.9792 16.8042 11.45 17 12 17Z" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="rounded-lg p-2 outline items-center justify-center hover:fill-accent-red fill-content-primary">
+                                                    <svg
+                                                        width="15"
+                                                        height="15"
+                                                        viewBox="0 0 24 24">
+                                                        <path d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17ZM14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17Z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="5" class="text-center py-4 text-2xl">
+                                        Nenhum contato encontrado
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
