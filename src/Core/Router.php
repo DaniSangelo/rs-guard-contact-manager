@@ -6,39 +6,42 @@ class Router
 {
     private $routes = [];
 
+    private function addRoute(
+        string $httpMethod,
+        string $uri,
+        array $controller,
+        ?string $middleware = null
+    ): void {
+        $this->routes[$httpMethod][$uri] = [
+            'class' => $controller[0],
+            'classMethod' => $controller[1],
+            'middleware' => $middleware,
+        ];
+    }
+
     public function get(string $uri, array $controller, ?string $middleware = null)
     {
-        if (!is_array($controller)) {
-            throw new \Exception("Controller must be an array");
-        }
-
-        $data = [
-            'class' => $controller[0],
-            'classMethod' => $controller[1],
-            'middleware' => $middleware,
-        ];
-        $this->routes['GET'][$uri] = $data;
+        $this->addRoute('GET', $uri, $controller, $middleware);
         return $this;
     }
 
-    public function post($uri, $controller, $middleware = null)
+    public function post(string $uri, array $controller, ?string $middleware = null)
     {
-        if (!is_array($controller)) {
-            throw new \Exception("Controller must be an array");
-        }
-
-        $data = [
-            'class' => $controller[0],
-            'classMethod' => $controller[1],
-            'middleware' => $middleware,
-        ];
-        $this->routes['POST'][$uri] = $data;
+        $this->addRoute('POST', $uri, $controller, $middleware);
         return $this;
     }
 
-    public function delete($uri, $method, $controller, $middleware = null) {}
+    public function delete(string $uri, array $controller, ?string $middleware = null)
+    {
+        $this->addRoute('DELETE', $uri, $controller, $middleware);
+        return $this;
+    }
 
-    public function put($uri, $method, $controller, $middleware = null) {}
+    public function put(string $uri, array $controller, ?string $middleware = null)
+    {
+        $this->addRoute('PUT', $uri, $controller, $middleware);
+        return $this;
+    }
 
     public function run()
     {
