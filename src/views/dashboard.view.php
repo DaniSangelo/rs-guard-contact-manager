@@ -1,0 +1,211 @@
+<?php
+$contacts = [
+    [
+        'nome' => 'John Doe',
+        'telefone' => '123-456-7890',
+        'email' => 'john.doe@example.com',
+        'tipo' => 'trabalho',
+        'img' => 'images/p1.png'
+    ],
+    [
+        'nome' => 'Jane Smith',
+        'telefone' => '987-654-3210',
+        'email' => 'jane.smith@example.com',
+        'tipo' => 'amigo',
+        'img' => 'images/p2.png'
+    ],
+];
+?>
+<div class="m-10 flex">
+    <!-- Side bar -->
+    <div class="flex flex-col h-screen p-4 items-center justify-between">
+        <!-- <div class="flex flex-col h-screen p-4 justify-between"> -->
+
+        <div>
+            <img src="images/logo.png" alt="Logo" />
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            <a class="rounded-lg p-2 bg-background-tertiary cursor-pointer">
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    class="hover:fill-accent-brand fill-content-muted">
+                    <path d="M5.85 17.1C6.7 16.45 7.65 15.9375 8.7 15.5625C9.75 15.1875 10.85 15 12 15C13.15 15 14.25 15.1875 15.3 15.5625C16.35 15.9375 17.3 16.45 18.15 17.1C18.7333 16.4167 19.1875 15.6417 19.5125 14.775C19.8375 13.9083 20 12.9833 20 12C20 9.78333 19.2208 7.89583 17.6625 6.3375C16.1042 4.77917 14.2167 4 12 4C9.78333 4 7.89583 4.77917 6.3375 6.3375C4.77917 7.89583 4 9.78333 4 12C4 12.9833 4.1625 13.9083 4.4875 14.775C4.8125 15.6417 5.26667 16.4167 5.85 17.1ZM12 13C11.0167 13 10.1875 12.6625 9.5125 11.9875C8.8375 11.3125 8.5 10.4833 8.5 9.5C8.5 8.51667 8.8375 7.6875 9.5125 7.0125C10.1875 6.3375 11.0167 6 12 6C12.9833 6 13.8125 6.3375 14.4875 7.0125C15.1625 7.6875 15.5 8.51667 15.5 9.5C15.5 10.4833 15.1625 11.3125 14.4875 11.9875C13.8125 12.6625 12.9833 13 12 13ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22Z" />
+                </svg>
+            </a>
+            <a class="rounded-lg p-2 bg-background-tertiary cursor-pointer">
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    class="hover:fill-accent-brand fill-content-muted">
+                    <path d="M10.825 22C10.375 22 9.98748 21.85 9.66248 21.55C9.33748 21.25 9.14165 20.8833 9.07498 20.45L8.84998 18.8C8.63331 18.7167 8.42915 18.6167 8.23748 18.5C8.04581 18.3833 7.85831 18.2583 7.67498 18.125L6.12498 18.775C5.70831 18.9583 5.29165 18.975 4.87498 18.825C4.45831 18.675 4.13331 18.4083 3.89998 18.025L2.72498 15.975C2.49165 15.5917 2.42498 15.1833 2.52498 14.75C2.62498 14.3167 2.84998 13.9583 3.19998 13.675L4.52498 12.675C4.50831 12.5583 4.49998 12.4458 4.49998 12.3375V11.6625C4.49998 11.5542 4.50831 11.4417 4.52498 11.325L3.19998 10.325C2.84998 10.0417 2.62498 9.68333 2.52498 9.25C2.42498 8.81667 2.49165 8.40833 2.72498 8.025L3.89998 5.975C4.13331 5.59167 4.45831 5.325 4.87498 5.175C5.29165 5.025 5.70831 5.04167 6.12498 5.225L7.67498 5.875C7.85831 5.74167 8.04998 5.61667 8.24998 5.5C8.44998 5.38333 8.64998 5.28333 8.84998 5.2L9.07498 3.55C9.14165 3.11667 9.33748 2.75 9.66248 2.45C9.98748 2.15 10.375 2 10.825 2H13.175C13.625 2 14.0125 2.15 14.3375 2.45C14.6625 2.75 14.8583 3.11667 14.925 3.55L15.15 5.2C15.3666 5.28333 15.5708 5.38333 15.7625 5.5C15.9541 5.61667 16.1416 5.74167 16.325 5.875L17.875 5.225C18.2916 5.04167 18.7083 5.025 19.125 5.175C19.5416 5.325 19.8666 5.59167 20.1 5.975L21.275 8.025C21.5083 8.40833 21.575 8.81667 21.475 9.25C21.375 9.68333 21.15 10.0417 20.8 10.325L19.475 11.325C19.4916 11.4417 19.5 11.5542 19.5 11.6625V12.3375C19.5 12.4458 19.4833 12.5583 19.45 12.675L20.775 13.675C21.125 13.9583 21.35 14.3167 21.45 14.75C21.55 15.1833 21.4833 15.5917 21.25 15.975L20.05 18.025C19.8166 18.4083 19.4916 18.675 19.075 18.825C18.6583 18.975 18.2416 18.9583 17.825 18.775L16.325 18.125C16.1416 18.2583 15.95 18.3833 15.75 18.5C15.55 18.6167 15.35 18.7167 15.15 18.8L14.925 20.45C14.8583 20.8833 14.6625 21.25 14.3375 21.55C14.0125 21.85 13.625 22 13.175 22H10.825ZM11 20H12.975L13.325 17.35C13.8416 17.2167 14.3208 17.0208 14.7625 16.7625C15.2041 16.5042 15.6083 16.1917 15.975 15.825L18.45 16.85L19.425 15.15L17.275 13.525C17.3583 13.2917 17.4166 13.0458 17.45 12.7875C17.4833 12.5292 17.5 12.2667 17.5 12C17.5 11.7333 17.4833 11.4708 17.45 11.2125C17.4166 10.9542 17.3583 10.7083 17.275 10.475L19.425 8.85L18.45 7.15L15.975 8.2C15.6083 7.81667 15.2041 7.49583 14.7625 7.2375C14.3208 6.97917 13.8416 6.78333 13.325 6.65L13 4H11.025L10.675 6.65C10.1583 6.78333 9.67915 6.97917 9.23748 7.2375C8.79581 7.49583 8.39165 7.80833 8.02498 8.175L5.54998 7.15L4.57498 8.85L6.72498 10.45C6.64165 10.7 6.58331 10.95 6.54998 11.2C6.51665 11.45 6.49998 11.7167 6.49998 12C6.49998 12.2667 6.51665 12.525 6.54998 12.775C6.58331 13.025 6.64165 13.275 6.72498 13.525L4.57498 15.15L5.54998 16.85L8.02498 15.8C8.39165 16.1833 8.79581 16.5042 9.23748 16.7625C9.67915 17.0208 10.1583 17.2167 10.675 17.35L11 20ZM12.05 15.5C13.0166 15.5 13.8416 15.1583 14.525 14.475C15.2083 13.7917 15.55 12.9667 15.55 12C15.55 11.0333 15.2083 10.2083 14.525 9.525C13.8416 8.84167 13.0166 8.5 12.05 8.5C11.0666 8.5 10.2375 8.84167 9.56248 9.525C8.88748 10.2083 8.54998 11.0333 8.54998 12C8.54998 12.9667 8.88748 13.7917 9.56248 14.475C10.2375 15.1583 11.0666 15.5 12.05 15.5Z" />
+                </svg>
+            </a>
+            <a class="rounded-lg p-2 bg-background-tertiary cursor-pointer">
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    class="hover:fill-accent-brand fill-content-muted">
+                    <path d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H11C11.2833 3 11.5208 3.09583 11.7125 3.2875C11.9042 3.47917 12 3.71667 12 4C12 4.28333 11.9042 4.52083 11.7125 4.7125C11.5208 4.90417 11.2833 5 11 5H5V19H11C11.2833 19 11.5208 19.0958 11.7125 19.2875C11.9042 19.4792 12 19.7167 12 20C12 20.2833 11.9042 20.5208 11.7125 20.7125C11.5208 20.9042 11.2833 21 11 21H5ZM17.175 13H10C9.71667 13 9.47917 12.9042 9.2875 12.7125C9.09583 12.5208 9 12.2833 9 12C9 11.7167 9.09583 11.4792 9.2875 11.2875C9.47917 11.0958 9.71667 11 10 11H17.175L15.3 9.125C15.1167 8.94167 15.025 8.71667 15.025 8.45C15.025 8.18333 15.1167 7.95 15.3 7.75C15.4833 7.55 15.7167 7.44583 16 7.4375C16.2833 7.42917 16.525 7.525 16.725 7.725L20.3 11.3C20.5 11.5 20.6 11.7333 20.6 12C20.6 12.2667 20.5 12.5 20.3 12.7L16.725 16.275C16.525 16.475 16.2875 16.5708 16.0125 16.5625C15.7375 16.5542 15.5 16.45 15.3 16.25C15.1167 16.05 15.0292 15.8125 15.0375 15.5375C15.0458 15.2625 15.1417 15.0333 15.325 14.85L17.175 13Z" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="flex flex-col">
+            <span class="text-sm text-content-muted">Logado como:</span>
+            <span class="text-content-body">daniel@mail.com</span>
+        </div>
+    </div>
+
+    <!-- Contacts list -->
+    <div class="bg-background-secondary rounded-3xl p-4 w-full flex flex-col">
+        <div class="rounded-3xl flex justify-between ">
+            <div class="flex items-center">
+                <h1 class="text-xl font-bold">Lista de contatos</h1>
+            </div>
+            <div class="flex space-x-3">
+                <input type="text" placeholder="Procurar" class="border outline-none rounded-md p-2" />
+                <a class="p-3 cursor-pointer hover:bg-background-tertiary/50 rounded-md bg-background-tertiary text-content-primary text-sm font-semibold">+ Adicionar Contato</a>
+                <button class="border rounded-md p-2">🔒</button>
+            </div>
+        </div>
+
+        <div class="flex gap-10">
+            <div class="
+                w-14
+                bg-accent-brand
+                text-content-inverse
+                rounded-2xl
+                p-2
+                flex
+                flex-col
+                items-center
+                max-h-[600px]
+                overflow-y-auto
+                [&::-webkit-scrollbar]:hidden
+                space-y-2
+            ">
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">A</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">B</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">C</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">D</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">E</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">F</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">G</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">H</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">I</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">J</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">K</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">L</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">M</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">N</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">O</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">P</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">Q</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">R</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">S</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">T</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">U</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">V</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">W</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">X</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">Y</a>
+                <a class="w-8 h-8 flex items-center justify-center rounded-full
+           hover:bg-accent-foreground transition-colors hover:font-bold">Z</a>
+            </div>
+            <div class="w-full space-y-3">
+                <div class="border-b-1 pb-2">
+                    <span class="text-content-body font-bold"> C</span>
+                </div>
+                <div>
+                    <table class="min-w-full divide-y divide-background-tertiary">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-content-muted uppercase tracking-wider">Nome</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-content-muted uppercase tracking-wider">Telefone</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-content-muted uppercase tracking-wider">Email</th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Ações</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-background-tertiary">
+                            <?php foreach ($contacts as $item): ?>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex gap-3 items-center">
+                                            <div><img src="<?= $item['img'] ?>" alt="<?= $item['nome'] ?>" class="w-12 h-12 rounded-2xl"/></div>
+                                            <div class="flex flex-col gap-1">
+                                                <span class="text-sm"><?= $item['nome']  ?></span>
+                                                <span class="text-xs text-content-muted"><?= $item['tipo']  ?></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><?= $item['telefone']  ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><?= $item['email']  ?></td>
+                                    
+                                    <!-- Ações -->
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <div class="flex items-center gap-4">
+                                            <a href="#" class="outline p-4 rounded-md hover:bg-background-tertiary">
+                                                Editar
+                                            </a>
+                                            <a href="#" class="rounded-lg p-3 outline items-center justify-center hover:fill-accent-brand fill-content-primary">
+                                                <svg
+                                                    width="15"
+                                                    height="15"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M6 22C5.45 22 4.97917 21.8042 4.5875 21.4125C4.19583 21.0208 4 20.55 4 20V10C4 9.45 4.19583 8.97917 4.5875 8.5875C4.97917 8.19583 5.45 8 6 8H15V6C15 5.16667 14.7083 4.45833 14.125 3.875C13.5417 3.29167 12.8333 3 12 3C11.3 3 10.6875 3.2125 10.1625 3.6375C9.6375 4.0625 9.28333 4.59167 9.1 5.225C9.03333 5.45833 8.89583 5.64583 8.6875 5.7875C8.47917 5.92917 8.25 6 8 6C7.71667 6 7.47917 5.90833 7.2875 5.725C7.09583 5.54167 7.025 5.325 7.075 5.075C7.30833 3.925 7.88333 2.95833 8.8 2.175C9.71667 1.39167 10.7833 1 12 1C13.3833 1 14.5625 1.4875 15.5375 2.4625C16.5125 3.4375 17 4.61667 17 6V8H18C18.55 8 19.0208 8.19583 19.4125 8.5875C19.8042 8.97917 20 9.45 20 10V20C20 20.55 19.8042 21.0208 19.4125 21.4125C19.0208 21.8042 18.55 22 18 22H6ZM6 20H18V10H6V20ZM12 17C12.55 17 13.0208 16.8042 13.4125 16.4125C13.8042 16.0208 14 15.55 14 15C14 14.45 13.8042 13.9792 13.4125 13.5875C13.0208 13.1958 12.55 13 12 13C11.45 13 10.9792 13.1958 10.5875 13.5875C10.1958 13.9792 10 14.45 10 15C10 15.55 10.1958 16.0208 10.5875 16.4125C10.9792 16.8042 11.45 17 12 17Z" />
+                                                </svg>
+                                            </a>
+                                            <a href="#" class="rounded-lg p-3 outline items-center justify-center hover:fill-accent-brand fill-content-primary">
+                                                <svg
+                                                    width="15"
+                                                    height="15"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17ZM14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17Z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
