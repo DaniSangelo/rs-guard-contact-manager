@@ -24,6 +24,7 @@ class LoginController extends BaseController
         if (!$user || (!password_verify($_POST['password'], $user->password))) {
             return $this->redirect('/login');
         }
+        session()->set('auth', $user);
         return $this->redirect('/dashboard');
     }
 }
