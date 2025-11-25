@@ -9,6 +9,6 @@ class LogoutController extends BaseController
     public function logout()
     {
         session()->destroy();
-        return $this->redirect('/');
+        return $this->redirect('/login');
     }
 }
