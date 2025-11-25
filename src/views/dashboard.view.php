@@ -302,16 +302,21 @@ $contacts = [
                 </svg>
             </button>
         </div>
+        <form method="post" action="/mostrar">
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-content-body mb-2">Senha</label>
+                <input id="input-modal-password" type="password" placeholder="Digite sua senha" name="password"class="outline w-full bg-background-tertiary border border-border-primary rounded-lg p-3 text-content-body focus:outline-none focus:border-accent-brand placeholder-content-placeholder">
+            </div>
 
-        <div class="mb-6">
-            <label class="block text-sm font-medium text-content-body mb-2">Senha</label>
-            <input id="input-modal-password" type="password" placeholder="Digite sua senha" class="w-full bg-background-tertiary border border-border-primary rounded-lg p-3 text-content-body focus:outline-none focus:border-accent-brand placeholder-content-placeholder">
-        </div>
-
-        <div class="flex justify-end gap-3">
-            <button id="cancel-modal" class="cursor-pointer px-4 py-2 rounded-lg bg-background-tertiary text-content-body hover:bg-background-tertiary/80 transition-colors">Voltar</button>
-            <button type="submit" id="submit-btn-modal" class="cursor-pointer px-4 py-2 rounded-lg bg-accent-brand text-content-inverse font-bold hover:bg-accent-brand/90 transition-colors">Confirmar</button>
-        </div>
+            <div class="flex justify-end gap-3">
+                <button id="cancel-modal" class="cursor-pointer px-4 py-2 rounded-lg bg-background-tertiary text-content-body hover:bg-background-tertiary/80 transition-colors">
+                    Voltar
+                </button>
+                <button type="submit" id="submit-btn-modal" class="cursor-pointer px-4 py-2 rounded-lg bg-accent-brand text-content-inverse font-bold hover:bg-accent-brand/90 transition-colors">
+                    Confirmar
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 
