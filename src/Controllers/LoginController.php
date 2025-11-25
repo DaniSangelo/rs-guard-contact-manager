@@ -21,10 +21,9 @@ class LoginController extends BaseController
     public function login()
     {
         $user = User::getByEmail($_POST['email']);
-        // if (!$user || (!password_verify($_POST['password'], $user['password']))) {
-        //     echo "Credenciais inválidas";
-        //     return;
-        // }
-        $this->redirect('/dashboard');
+        if (!$user || (!password_verify($_POST['password'], $user->password))) {
+            return $this->redirect('/login');
+        }
+        return $this->redirect('/dashboard');
     }
 }

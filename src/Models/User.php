@@ -11,18 +11,6 @@ class User
     public $email;
     public $password;
 
-    private function __construct($name, $email, $password)
-    {
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
-    }
-
-    public static function create($name, $email, $password)
-    {
-        return new User($name, $email, $password);
-    }
-
     public static function register(User $user)
     {
         $db = new Database();
@@ -35,10 +23,11 @@ class User
 
     public static function getByEmail(string $email)
     {
-        return [
-            'name' => 'Daniel',
-            'email' => 'daniel@mail.com',
-            'password' => 'daniel'
-        ];
+        $db = new Database();
+        return $db->query(
+            "SELECT * FROM users WHERE email = :email",
+            compact('email'),
+            self::class
+        )->fetch();
     }
 }

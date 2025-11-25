@@ -16,11 +16,10 @@ class RegisterController extends BaseController
     {
         //todo: add validation
 
-        $user = User::create(
-            $_POST['name'],
-            $_POST['email'],
-            password_hash($_POST['password'], PASSWORD_BCRYPT)
-        );
+        $user = new User();
+        $user->name = $_POST['name'];
+        $user->email = $_POST['email'];
+        $user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
         User::register($user);
 
