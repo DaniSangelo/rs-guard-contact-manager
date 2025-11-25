@@ -2,98 +2,11 @@
 
 $_GET['letter'] = $_GET['letter'] ?? 'A';
 
-$contacts = [
-    [
-        'nome' => 'John Doe',
-        'telefone' => '123-456-7890',
-        'email' => 'john.doe@example.com',
-        'tipo' => 'trabalho',
-        'img' => 'images/p1.png'
-    ],
-    [
-        'nome' => 'Jane Smith',
-        'telefone' => '987-654-3210',
-        'email' => 'jane.smith@example.com',
-        'tipo' => 'amigo',
-        'img' => 'images/p2.png'
-    ],
-    [
-        'nome' => 'Alice Johnson',
-        'telefone' => '111-222-3333',
-        'email' => 'alice.j@example.com',
-        'tipo' => 'familia',
-        'img' => 'images/p2.png'
-    ],
-    [
-        'nome' => 'Bob Williams',
-        'telefone' => '444-555-6666',
-        'email' => 'bob.w@example.com',
-        'tipo' => 'trabalho',
-        'img' => 'images/p2.png'
-    ],
-    [
-        'nome' => 'Charlie Brown',
-        'telefone' => '777-888-9999',
-        'email' => 'charlie.b@example.com',
-        'tipo' => 'amigo',
-        'img' => 'images/p1.png'
-    ],
-    [
-        'nome' => 'Diana Prince',
-        'telefone' => '101-202-3030',
-        'email' => 'diana.p@example.com',
-        'tipo' => 'familia',
-        'img' => 'images/p2.png'
-    ],
-    [
-        'nome' => 'Eve Adams',
-        'telefone' => '404-505-6060',
-        'email' => 'eve.a@example.com',
-        'tipo' => 'trabalho',
-        'img' => 'images/p2.png'
-    ],
-    [
-        'nome' => 'Frank White',
-        'telefone' => '707-808-9090',
-        'email' => 'frank.w@example.com',
-        'tipo' => 'amigo',
-        'img' => 'images/p1.png'
-    ],
-    [
-        'nome' => 'Grace Kelly',
-        'telefone' => '123-123-1234',
-        'email' => 'grace.k@example.com',
-        'tipo' => 'familia',
-        'img' => 'images/p1.png'
-    ],
-    [
-        'nome' => 'Henry Green',
-        'telefone' => '456-456-4567',
-        'email' => 'henry.g@example.com',
-        'tipo' => 'trabalho',
-        'img' => 'images/p1.png'
-    ],
-    [
-        'nome' => 'Ivy King',
-        'telefone' => '789-789-7890',
-        'email' => 'ivy.k@example.com',
-        'tipo' => 'amigo',
-        'img' => 'images/p1.png'
-    ],
-    [
-        'nome' => 'Jack Black',
-        'telefone' => '000-111-2222',
-        'email' => 'jack.b@example.com',
-        'tipo' => 'familia',
-        'img' => 'images/p1.png'
-    ],
-
-];
 ?>
 <div id="dashboard-content" class="transition-all duration-100">
     <div class="m-10 flex">
         <!-- Side bar -->
-        <div class="flex flex-col h-screen p-4 items-center justify-between">
+        <div class="flex flex-col h-screen p-4 items-center justify-between w-50">
             <div>
                 <img src="images/logo.png" alt="Logo" />
             </div>
@@ -132,8 +45,8 @@ $contacts = [
             </div>
 
             <div class="flex flex-col">
-                <span class="text-sm text-content-muted">Logado como:</span>
-                <span class="text-content-body">daniel@mail.com</span>
+                <span class="text-xs text-content-muted">Logado como:</span>
+                <span class="text-sm text-content-body"><?= $user->email ?></span>
             </div>
         </div>
 
@@ -179,19 +92,19 @@ $contacts = [
                 <div
                     id="alphabet"
                     class="
-                w-14
-                bg-accent-brand
-                text-content-inverse
-                rounded-2xl
-                p-2
-                flex
-                flex-col
-                items-center
-                max-h-[600px]
-                overflow-y-auto
-                [&::-webkit-scrollbar]:hidden
-                space-y-2
-            ">
+                    w-14
+                    bg-accent-brand
+                    text-content-inverse
+                    rounded-2xl
+                    p-2
+                    flex
+                    flex-col
+                    items-center
+                    max-h-[600px]
+                    overflow-y-auto
+                    [&::-webkit-scrollbar]:hidden
+                    space-y-2
+                ">
                     <?php for ($i = 65; $i <= 90; $i++): ?>
                         <a
                             href="?letter=<?= chr($i) ?>"
@@ -231,23 +144,22 @@ $contacts = [
                             </thead>
                             <tbody class="divide-y divide-background-tertiary">
                                 <?php
-                                $filteredContacts = array_filter($contacts, fn($contact) => $contact['nome'][0] === ($_GET['letter'] ?? 'A'));
-                                usort($filteredContacts, fn($a, $b) => strcmp($a['nome'], $b['nome']));
+                                $filteredContacts = array_filter($contacts, fn($contact) => $contact->name[0] === ($_GET['letter'] ?? 'A'));
+                                usort($filteredContacts, fn($a, $b) => strcmp($a->name, $b->name));
                                 ?>
                                 <?php if (count($filteredContacts) > 0) { ?>
                                     <?php foreach ($filteredContacts as $item): ?>
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex gap-3 items-center">
-                                                    <div><img src="<?= $item['img'] ?>" alt="<?= $item['nome'] ?>" class="w-12 h-12 rounded-2xl" /></div>
+                                                    <div><img src="<?= $item->img ?>" alt="<?= $item->name ?>" class="w-12 h-12 rounded-2xl" /></div>
                                                     <div class="flex flex-col gap-1">
-                                                        <span class="text-sm"><?= $item['nome']  ?></span>
-                                                        <span class="text-xs text-content-muted"><?= $item['tipo']  ?></span>
+                                                        <span class="text-sm"><?= $item->name ?></span>
+                                                        <span class="text-xs text-content-muted"><?= $item->type ?></span>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap"><?= $item['telefone']  ?></td>
-                                            <td class="px-6 py-4 whitespace-nowrap"><?= $item['email']  ?></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"><?= $item->phone ?></td>
 
                                             <!-- Ações -->
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -308,7 +220,7 @@ $contacts = [
         <form method="post" action="/mostrar">
             <div class="mb-6">
                 <label class="block text-sm font-medium text-content-body mb-2">Senha</label>
-                <input id="input-modal-password" type="password" placeholder="Digite sua senha" name="password"class="outline w-full bg-background-tertiary border border-border-primary rounded-lg p-3 text-content-body focus:outline-none focus:border-accent-brand placeholder-content-placeholder">
+                <input id="input-modal-password" type="password" placeholder="Digite sua senha" name="password" class="outline w-full bg-background-tertiary border border-border-primary rounded-lg p-3 text-content-body focus:outline-none focus:border-accent-brand placeholder-content-placeholder">
             </div>
 
             <div class="flex justify-end gap-3">

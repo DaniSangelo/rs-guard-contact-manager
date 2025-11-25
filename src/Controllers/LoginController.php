@@ -25,6 +25,6 @@ class LoginController extends BaseController
             return $this->redirect('/login');
         }
         session()->set('auth', $user);
-        return $this->redirect('/dashboard');
+        return $this->redirect('dashboard');
     }
 }
