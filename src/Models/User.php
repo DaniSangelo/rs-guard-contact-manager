@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Core\Database;
+
 class User
 {
     public $id = null;
@@ -23,7 +25,12 @@ class User
 
     public static function register(User $user)
     {
-        echo "Registrado com sucesso";
+        $db = new Database();
+        $db->query("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)", [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $user->password
+        ]);
     }
 
     public static function getByEmail(string $email)
